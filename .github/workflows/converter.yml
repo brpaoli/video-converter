@@ -1,0 +1,33 @@
+name: Convert Alpha Video
+
+on:
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install FFmpeg
+        run: brew install ffmpeg
+
+      - name: Download Video
+        run: |
+          curl -L https://drive.google.com/file/d/13oohwyP06EDzmkJB8OD3OPzffMkToPSf/view?usp=sharing" -o video-transparete.mov
+
+      - name: Convert HEVC Alpha
+        run: |
+          ffmpeg -i video.mov \
+          -c:v hevc_videotoolbox \
+          -alpha_quality 0.75 \
+          -tag:v hvc1 \
+          -pix_fmt bgra \
+          video-alpha.mp4
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-alpha
+          path: video-alpha.mp4
