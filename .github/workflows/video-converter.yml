@@ -20,10 +20,12 @@ jobs:
       - name: Convert HEVC Alpha
         run: |
           ffmpeg -i video-trasparente.mov \
+          -vf "format=bgra" \
           -c:v hevc_videotoolbox \
+          -allow_sw 1 \
+          -require_sw 1 \
           -alpha_quality 0.75 \
           -tag:v hvc1 \
-          -pix_fmt bgra \
           video-alpha.mp4
 
       - name: Upload Artifact
