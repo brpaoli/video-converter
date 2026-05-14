@@ -15,7 +15,7 @@ jobs:
 
       - name: Download Video
         run: |
-          curl -L https://drive.google.com/file/d/13oohwyP06EDzmkJB8OD3OPzffMkToPSf/view?usp=sharing" -o video-transparete.mov
+          curl -L "https://drive.google.com/uc?export=download&id=13oohwyP06EDzmkJB8OD3OPzffMkToPSf" -o video.mov
 
       - name: Convert HEVC Alpha
         run: |
