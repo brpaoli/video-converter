@@ -15,11 +15,11 @@ jobs:
 
       - name: Download Video
         run: |
-          curl -L "https://drive.google.com/uc?export=download&id=13oohwyP06EDzmkJB8OD3OPzffMkToPSf" -o video.mov
+          curl -L "https://drive.google.com/uc?export=download&id=13oohwyP06EDzmkJB8OD3OPzffMkToPSf" -o video-trasparente.mov
 
       - name: Convert HEVC Alpha
         run: |
-          ffmpeg -i video.mov \
+          ffmpeg -i video-trasparente.mov \
           -c:v hevc_videotoolbox \
           -alpha_quality 0.75 \
           -tag:v hvc1 \
